@@ -214,6 +214,7 @@ public class GameService {
             return Response.status(401).build();
         }
     }
+
     @PUT
     @ApiOperation(value = "update a User", notes = "Do you want to update a User?")
     @ApiResponses(value = {
@@ -245,6 +246,16 @@ public class GameService {
         catch (GadgetDoesNotExistException e) {
             return Response.status(401).build();
         }
+    }
+    @PUT
+    @ApiOperation(value = "Changes language", notes = "Changes language")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successful"),
+            @ApiResponse(code = 404, message = "Gadget not found")
+    })
+    @Path("/user/change_language/{language}")
+    public Response change_language(@PathParam("language") String id) {
+            return Response.status(201).build();
     }
 
     @GET
