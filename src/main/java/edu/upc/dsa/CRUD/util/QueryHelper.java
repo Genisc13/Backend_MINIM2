@@ -101,13 +101,30 @@ public class QueryHelper {
         return buffer.toString();
     }
 
+    /*
     public static String createQueryDELETE(Object entity) {
         StringBuffer buffer = new StringBuffer();
         buffer.append("DELETE FROM ").append(entity.getClass().getSimpleName());
         buffer.append(" WHERE ").append(ObjectHelper.getIdAttributeName(entity.getClass())).append(" = ?");
         return buffer.toString();
     }
-
+*/
+    public static String createQueryDELETE(Object entity){
+        StringBuffer buffer =new StringBuffer();
+        buffer.append("DELETE FROM ").append(entity.getClass().getSimpleName()).append(" WHERE ");
+        Boolean first =true;
+        String[] fields = ObjectHelper.getFields(entity);
+        for(String field : fields){
+            if (first){
+                buffer.append(field).append(" = ? ");
+                first =false;
+            }
+            else {
+                buffer.append("AND ").append(field).append(" = ? ");
+            }
+        }
+        return  buffer.toString();
+    }
     public static String createQueryDeleteRecords(Class theClass) {
         StringBuffer query = new StringBuffer();
         query.append("DELETE FROM ").append(theClass.getSimpleName());

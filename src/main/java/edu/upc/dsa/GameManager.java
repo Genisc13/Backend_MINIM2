@@ -18,6 +18,7 @@ public interface GameManager {
     public List<Gadget> gadgetList();
     public void addGadget(String idGadget, int cost, String description, String unityShape) throws SQLException, GadgetWithSameIdAlreadyExists;
     public void updateGadget(Gadget gadget) throws GadgetDoesNotExistException, SQLException;
+    public void updateUser(User user) throws UserDoesNotExistException,SQLException;
     public void buyGadget(String idGadget, String idUser) throws NotEnoughMoneyException, GadgetDoesNotExistException, UserDoesNotExistException, SQLException;
     public Object getGadget(String id) throws GadgetDoesNotExistException;
     public Object deleteGadget(String id) throws GadgetDoesNotExistException;

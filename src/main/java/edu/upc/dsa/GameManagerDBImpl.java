@@ -131,6 +131,10 @@ public class GameManagerDBImpl implements GameManager{
     public void updateGadget(Gadget gadget) throws SQLException {
         this.session.update(gadget);
     }
+    @Override
+    public void updateUser(User user) throws SQLException{
+        this.session.update(user);
+    }
 
     @Override
     public void buyGadget(String idGadget, String idUser) throws NotEnoughMoneyException, GadgetDoesNotExistException, UserDoesNotExistException, SQLException {

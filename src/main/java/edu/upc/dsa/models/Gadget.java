@@ -46,4 +46,9 @@ public class Gadget {
     public void setUnityShape(String unityShape) {
         this.unityShape = unityShape;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

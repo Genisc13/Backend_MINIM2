@@ -214,6 +214,22 @@ public class GameService {
             return Response.status(401).build();
         }
     }
+    @PUT
+    @ApiOperation(value = "update a User", notes = "Do you want to update a User?")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successful"),
+            @ApiResponse(code = 401, message = "User does not exist")
+    })
+    @Path("/user/update")
+    public Response updateAUser(User gadget) {
+        try{
+            this.tm.updateUser(gadget);
+            return Response.status(201).build();
+        }
+        catch (UserDoesNotExistException | SQLException e) {
+            return Response.status(401).build();
+        }
+    }
     @DELETE
     @ApiOperation(value = "Deletes a gadget", notes = "Deletes a gadget")
     @ApiResponses(value = {

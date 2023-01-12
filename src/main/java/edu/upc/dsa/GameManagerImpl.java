@@ -117,6 +117,16 @@ public class GameManagerImpl implements GameManager {
             logger.info("Gadget updated");
         }
     }
+    public void  updateUser(User user) throws UserDoesNotExistException{
+        logger.info(("updateUser("+user+")"));
+        User found = getUser(user.getIdUser());
+        found.setPassword(user.getPassword());
+        found.setBirthday(user.getBirthday());
+        found.setName(user.getName());
+        found.setEmail(user.getEmail());
+        found.setSurname(user.getSurname());
+        logger.info("User updated");
+    }
     public int searchGadgetPosition(String idGadget){
         logger.info("searchGadgetPosition("+idGadget+")");
         int i=0;
